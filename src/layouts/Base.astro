@@ -1,0 +1,132 @@
+---
+// Self-hosted Geist (upright weight axis) — imported via JS so Vite emits the
+// woff2 assets. Subsets are lazy-loaded by the browser via unicode-range, so
+// English pages only fetch the Latin file. No third-party requests.
+import '@fontsource-variable/geist/wght.css';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path to an OG image relative to site root. */
+  image?: string;
+  /** When true, search engines should not index this page. */
+  noindex?: boolean;
+}
+
+const {
+  title = 'Pilar Martinez Montiel — Product Engineer',
+  description = 'Product engineer building developer tools. Vue, Node.js and Playwright. Two case studies from Checkly: the Playwright Reporter and the OpenTelemetry Traces UI.',
+  image = '/og-image.png',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+
+// JSON-LD Person schema for rich results.
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Pilar Martinez Montiel',
+  jobTitle: 'Product Engineer',
+  email: 'mailto:pilar.m4rtinez@gmail.com',
+  url: Astro.site?.href,
+  sameAs: [
+    'https://github.com/pilimartinez',
+    'https://www.linkedin.com/in/pilar-martinez-mon',
+  ],
+  knowsAbout: ['Vue.js', 'Node.js', 'Playwright', 'TypeScript', 'Developer Tools'],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1211" media="(prefers-color-scheme: dark)" />
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pilar Martinez Montiel" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+
+    {/*
+      Theme init — runs before paint to set the initial color scheme from a
+      saved choice or the system preference, preventing a flash of the wrong
+      theme. This is the only inline script; toggling is handled by the Vue
+      island (ThemeToggle.vue). Kept tiny and dependency-free.
+    */}
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('theme');
+          const system = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const dark = stored ? stored === 'dark' : system;
+          document.documentElement.classList.toggle('dark', dark);
+        } catch (_) {}
+      })();
+    </script>
+
+    {/*
+      ANALYTICS PLACEHOLDER — choose one and add your own key/domain.
+      Privacy-friendly, cookieless options that keep Lighthouse green:
+
+      Plausible:
+      <script defer data-domain="YOUR_DOMAIN" src="https://plausible.io/js/script.js"></script>
+
+      Cloudflare Web Analytics:
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "YOUR_TOKEN"}'></script>
+
+      Do NOT hardcode a real key in version control if the repo is public.
+    */}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
+    <style>
+      /* Skip link — visible only when focused, for keyboard users. */
+      .skip-link {
+        position: absolute;
+        left: 0.5rem;
+        top: -3rem;
+        z-index: 50;
+        padding: 0.5rem 0.875rem;
+        background: var(--accent);
+        color: #fff;
+        border-radius: 0.375rem;
+        transition: top 0.15s ease;
+      }
+      .skip-link:focus {
+        top: 0.5rem;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import WorkCard from '../components/WorkCard.astro';
+import OpenSource from '../components/OpenSource.astro';
+import Footer from '../components/Footer.astro';
+
+const work = (await getCollection('work')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Base>
+  <div class="mx-auto w-full max-w-3xl px-5 py-10 sm:px-6 sm:py-16">
+    <Hero />
+
+    <main id="main">
+      <About />
+
+      <section id="work" aria-labelledby="work-heading" class="mt-24 sm:mt-32">
+        <h2
+          id="work-heading"
+          class="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]"
+        >
+          Selected work
+        </h2>
+        <div class="mt-8 grid gap-6">
+          {
+            work.map((entry) => (
+              <WorkCard
+                href={`/work/${entry.id}`}
+                title={entry.data.title}
+                role={entry.data.role}
+                company={entry.data.company}
+                period={entry.data.period}
+                tech={entry.data.tech}
+                summary={entry.data.summary}
+              />
+            ))
+          }
+        </div>
+      </section>
+
+      <OpenSource />
+    </main>
+
+    <Footer />
+  </div>
+</Base>

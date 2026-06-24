@@ -1,0 +1,42 @@
+---
+const year = new Date().getFullYear();
+
+const contacts = [
+  { label: 'Email', url: 'mailto:pilar.m4rtinez@gmail.com' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/pilar-martinez-mon' },
+  { label: 'GitHub', url: 'https://github.com/pilimartinez' },
+];
+---
+
+<footer class="mt-24 border-t border-[var(--border)] pt-10 sm:mt-32">
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p class="text-base font-medium">Pilar Martinez Montiel</p>
+      <p class="mt-1 max-w-prose text-sm text-[var(--muted)]">
+        Outside work: a foodie splitting time between Buenos Aires and Paris.
+      </p>
+    </div>
+
+    <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+      {
+        contacts.map((c) => (
+          <li>
+            <a
+              href={c.url}
+              class="transition-colors hover:text-[var(--accent)]"
+              {...c.url.startsWith('http')
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {}}
+            >
+              {c.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="mt-10 text-xs text-[var(--muted)]">
+    &copy; {year} Pilar Martinez Montiel. Built with Astro.
+  </p>
+</footer>
