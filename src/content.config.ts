@@ -28,7 +28,6 @@ const articles = defineCollection({
   schema: z.object({
     title: z.string(),
     url: z.string().url(),
-    publication: z.string(),
     topic: z.string(),
     order: z.number(),
   }),
