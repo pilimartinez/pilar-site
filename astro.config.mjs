@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // NOTE: update `site` to the production domain before deploying.
 // It drives canonical URLs, sitemap entries and absolute OG image URLs.
-const SITE = 'https://pilarmartinez.dev';
+const SITE = 'https://pilar-site.vercel.app';
 
 // https://astro.build/config
 export default defineConfig({
