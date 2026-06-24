@@ -22,4 +22,15 @@ const work = defineCollection({
   }),
 });
 
-export const collections = { work };
+// External articles / blog posts, rendered as a simple link list.
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
+  schema: z.object({
+    title: z.string(),
+    url: z.string().url(),
+    publication: z.string(),
+    order: z.number(),
+  }),
+});
+
+export const collections = { work, articles };

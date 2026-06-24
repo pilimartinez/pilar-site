@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+{
+  articles.length > 0 && (
+    <section
+      id="writing"
+      aria-labelledby="writing-heading"
+      class="mt-24 sm:mt-32"
+    >
+      <h2
+        id="writing-heading"
+        class="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]"
+      >
+        Writing
+      </h2>
+
+      <ul class="mt-8 divide-y divide-[var(--border)] border-y border-[var(--border)]">
+        {articles.map((article) => (
+          <li>
+            <a
+              href={article.data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-wrap items-baseline gap-x-3 gap-y-1 py-4 transition-colors hover:text-[var(--accent)]"
+            >
+              <span class="font-medium">{article.data.title}</span>
+              <span class="text-xs text-[var(--muted)]">
+                {article.data.publication}
+              </span>
+              <span
+                aria-hidden="true"
+                class="ml-auto text-[var(--muted)] transition-transform group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+              >
+                &rarr;
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
