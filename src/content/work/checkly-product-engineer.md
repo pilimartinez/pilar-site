@@ -2,7 +2,7 @@
 company: Checkly
 role: Product Engineer
 period: 2022–present
-summary: Product engineer working across Checkly's web app and developer tooling. UI features, design system work, and a bit of everything in between — backend, runners, the marketing website. Close to product and design throughout. From building features to shipping them and watching how they're adopted.
+summary: "A frontend engineer turning more full-stack at Checkly — working wherever the product needs it: UI, backend, runners and beyond. Close to product and design throughout, from building features to shipping them and watching how they're adopted."
 tech:
   - Vue
   - TypeScript
