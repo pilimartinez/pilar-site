@@ -19,9 +19,8 @@ const svg = `
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="0" y="0" width="12" height="630" fill="#34d399"/>
   <g font-family="Geist, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
-    <text x="90" y="240" fill="#ededec" font-size="78" font-weight="600" letter-spacing="-1.5">Pilar Martinez Montiel</text>
-    <text x="90" y="320" fill="#34d399" font-size="40" font-weight="600" letter-spacing="-0.5">Product engineer building developer tools.</text>
-    <text x="90" y="392" fill="#a3a39c" font-size="30" font-weight="400">Vue · Node.js · Playwright — Buenos Aires &amp; Paris</text>
+    <text x="90" y="280" fill="#ededec" font-size="78" font-weight="600" letter-spacing="-1.5">Pilar Martinez Montiel</text>
+    <text x="90" y="360" fill="#34d399" font-size="40" font-weight="600" letter-spacing="-0.5">Product engineer building developer tools.</text>
   </g>
   <text x="90" y="560" fill="#5c6b64" font-size="24" font-weight="500" letter-spacing="2"
     font-family="Geist, ui-sans-serif, system-ui, sans-serif">GITHUB.COM/PILIMARTINEZ</text>

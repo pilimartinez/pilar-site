@@ -5,7 +5,6 @@ const links = [
   { label: 'GitHub', url: 'https://github.com/pilimartinez' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/pilar-martinez-mon' },
   { label: 'Email', url: 'mailto:pilar.m4rtinez@gmail.com' },
-  { label: 'Download CV', url: '/cv.pdf' },
 ];
 ---
 
@@ -25,9 +24,6 @@ const links = [
     >
       Product engineer building developer tools.
     </h1>
-    <p class="mt-6 max-w-prose text-lg text-[var(--muted)] sm:text-xl">
-      Vue · Node.js · Playwright. Between Buenos Aires and Paris.
-    </p>
 
     <ul class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium">
       {
@@ -39,7 +35,6 @@ const links = [
               {...link.url.startsWith('http')
                 ? { target: '_blank', rel: 'noopener noreferrer' }
                 : {}}
-              {...link.label === 'Download CV' ? { download: true } : {}}
             >
               {link.label}
               <span
