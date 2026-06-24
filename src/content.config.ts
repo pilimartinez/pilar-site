@@ -30,8 +30,6 @@ const articles = defineCollection({
     url: z.string().url(),
     publication: z.string(),
     topic: z.string(),
-    // ISO date (yyyy-mm-dd); rendered as e.g. "Mar 2024".
-    date: z.string().optional(),
     order: z.number(),
   }),
 });

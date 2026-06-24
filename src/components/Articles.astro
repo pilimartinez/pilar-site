@@ -4,14 +4,6 @@ import { getCollection } from 'astro:content';
 const articles = (await getCollection('articles')).sort(
   (a, b) => a.data.order - b.data.order
 );
-
-// ISO date (yyyy-mm-dd) → "Mar 2024". Parsed at noon UTC to avoid TZ drift.
-function formatDate(iso: string): string {
-  return new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', {
-    month: 'short',
-    year: 'numeric',
-  });
-}
 ---
 
 {
@@ -36,16 +28,8 @@ function formatDate(iso: string): string {
             rel="noopener noreferrer"
             class="group flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition-colors hover:border-[var(--accent)]"
           >
-            <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium uppercase tracking-wide text-[var(--muted)]">
-              {article.data.date && (
-                <>
-                  <time datetime={article.data.date}>
-                    {formatDate(article.data.date)}
-                  </time>
-                  <span aria-hidden="true">·</span>
-                </>
-              )}
-              <span>{article.data.topic}</span>
+            <div class="text-xs font-medium uppercase tracking-wide text-[var(--muted)]">
+              {article.data.topic}
             </div>
 
             <h3 class="mt-2 font-semibold leading-snug tracking-tight text-pretty group-hover:text-[var(--accent)]">
