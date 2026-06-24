@@ -1,8 +1,5 @@
 # Pilar Martinez Montiel — personal site
 
-A fast, clean, editorial personal site for a product engineer. Built to read as a
-work sample: well-structured code, excellent performance, accessible.
-
 ## Tech stack
 
 - **[Astro 6](https://astro.build/)** + **TypeScript** (strict), static output
@@ -11,8 +8,6 @@ work sample: well-structured code, excellent performance, accessible.
 - **Content Collections** for the work history and articles
 - **@astrojs/sitemap** + Open Graph meta + JSON-LD `Person` schema for SEO
 - Self-hosted **Geist** variable font (Latin subset, no third-party requests)
-
-Zero client JS except the theme-toggle island.
 
 ## Local development
 
@@ -24,22 +19,6 @@ npm run dev      # dev server with hot reload → http://localhost:4321
 npm run build    # production build to ./dist
 npm run preview  # serve the production build locally
 ```
-
-## Editing content
-
-Everything is content-driven — no need to touch components for routine updates.
-
-- **Work history** — `src/content/work/*.md`. One file per role. Frontmatter:
-  `company`, `role`, `period`, `summary`, `tech` (optional pills), `links`
-  (optional), `order` (controls display order). Pills come from `tech`.
-- **Articles** — `src/content/articles/*.md`. Frontmatter: `title`, `url`,
-  `topic`, `order`.
-- **Hero / About / Footer copy** — `src/components/Hero.astro`,
-  `About.astro`, `Footer.astro`.
-- **Social links** — `Hero.astro` and `Footer.astro`, and the JSON-LD `sameAs`
-  array in `src/layouts/Base.astro`.
-- **OG image** — regenerate with `node scripts/generate-og.mjs` after editing
-  the script.
 
 ## Before deploying
 
