@@ -1,0 +1,52 @@
+---
+import ThemeToggle from './ThemeToggle.vue';
+
+const links = [
+  { label: 'GitHub', url: 'https://github.com/pilimartinez' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/pilar-martinez-mon' },
+  { label: 'Email', url: 'mailto:pilar.m4rtinez@gmail.com' },
+];
+---
+
+<header class="relative">
+  <nav class="flex items-center justify-between" aria-label="Theme">
+    <span class="text-sm font-medium tracking-tight text-[var(--muted)]">
+      Pilar Martinez Montiel
+    </span>
+    {/* The one Vue island. client:load so the toggle is interactive immediately. */}
+    <ThemeToggle client:load />
+  </nav>
+
+  <div class="mt-16 sm:mt-24">
+    <h1
+      class="text-4xl font-semibold tracking-tight text-balance sm:text-6xl"
+      style="view-transition-name: hero-title"
+    >
+      Product engineer building web products end to end.
+    </h1>
+
+    <ul class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.url}
+              class="group inline-flex items-center gap-1.5 text-[var(--fg)] transition-colors hover:text-[var(--accent)]"
+              {...link.url.startsWith('http')
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {}}
+            >
+              {link.label}
+              <span
+                aria-hidden="true"
+                class="text-[var(--muted)] transition-transform group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+              >
+                &rarr;
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</header>

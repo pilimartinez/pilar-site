@@ -1,0 +1,25 @@
+{
+  "name": "pilar-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vue": "^6.0.1",
+    "@fontsource-variable/geist": "^5.2.9",
+    "@tailwindcss/postcss": "^4.3.1",
+    "astro": "^6.4.8",
+    "tailwindcss": "^4.3.1",
+    "vue": "^3.5.38"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.2"
+  }
+}
