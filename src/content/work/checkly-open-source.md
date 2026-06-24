@@ -2,7 +2,7 @@
 company: Checkly
 role: Open Source Engineer
 period: 2021–2022
-summary: Built open-source developer tooling around Checkly's public API across Node.js, Terraform, Go and Vue, helping developers manage monitoring as code.
+summary: Built and collaborated on open-source developer tooling around Checkly's public API across Node.js, Terraform, Go and Vue, helping developers manage monitoring as code.
 tech:
   - Node.js
   - Terraform
